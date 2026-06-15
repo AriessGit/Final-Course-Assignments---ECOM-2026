@@ -1,0 +1,16 @@
+
+Write a short analysis:
+In a comment block or a print statement at the end of your file, answer:
+• Which query returned the most relevant results, and why?
+• Did any query return a surprisingly good match — a document that matched the concept even though it didn't share any words?
+• What distance threshold would you use to decide "this result is relevant"?
+
+
+The query “stocks of companies leading in artificial intelligence and technology innovation” returned the most relevant results because it matches how NVIDIA, Microsoft, and Google describe their operations with terms like AI, cloud computing, and advanced technology.
+Those companies are explicitly stated as prominent in those sectors, so the semantic search ranks them at the beginning of the list.
+The query “stocks known for long-term value investing and strong business moats” surprisingly matched Apple and Berkshire Hathaway even though their documents do not contain the exact phrases “long-term value investing” or “business moat”.
+Apple matched because its description highlights strong brand loyalty, an integrated product ecosystem, and enduring consumer appeal, which align with the concept of a business moat.
+Berkshire Hathaway matched because its description emphasizes diverse investments, insurance, and railroad businesses, reflecting long-term value and strength through diversification.
+These examples show that semantic search identifies core business ideas instead of only matching identical words.
+For relevance, I would use the smallest distance values as the strongest signal and treat results below a chosen threshold as relevant, using the top 1–3 results with the lowest distances as the main relevant matches.
+I would not fix a single number like 0.5 or 1.0 or other valuem, because the distance scale varies with each query and dataset, so I would adjust the threshold after inspecting the actual distances.
