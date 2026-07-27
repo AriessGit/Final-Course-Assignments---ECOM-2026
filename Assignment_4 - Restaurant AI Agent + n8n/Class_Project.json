@@ -1,0 +1,386 @@
+{
+  "name": "Class_Project",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "restaurant",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -96,
+        0
+      ],
+      "id": "f4876d95-6470-4d17-9756-7baab4d1da28",
+      "name": "Webhook",
+      "webhookId": "8509efc2-e462-4d42-868f-77925d3f0ee4"
+    },
+    {
+      "parameters": {
+        "fromEmail": "ariecold@gmail.com",
+        "toEmail": "ariecold@gmail.com",
+        "subject": "Reservation Confirm!",
+        "html": "=<!DOCTYPE html>\n<html>\n<body style=\"margin:0; padding:0; background-color:#eef6f8; font-family:Arial, Helvetica, sans-serif;\">\n  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#eef6f8; padding:24px 0;\">\n    <tr>\n      <td align=\"center\">\n        <table role=\"presentation\" width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 4px 16px rgba(0,60,90,0.15);\">\n\n          <!-- כותרת עליונה -->\n          <tr>\n            <td style=\"background:linear-gradient(135deg,#0b4f6c 0%,#01baef 55%,#5dd9c1 100%); padding:40px 30px; text-align:center;\">\n              <div style=\"font-size:36px; margin-bottom:8px;\">🌊🐟🦐</div>\n              <h1 style=\"color:#ffffff; margin:0; font-size:26px; letter-spacing:1px;\">Tasty Sea – Seafood</h1>\n              <p style=\"color:#e6faff; margin:6px 0 0; font-size:14px;\">Fresh from the sea to your table</p>\n            </td>\n          </tr>\n\n          <!-- הודעת אישור -->\n          <tr>\n            <td style=\"padding:32px 30px 8px; text-align:center;\">\n              <div style=\"font-size:40px;\">✅</div>\n              <h2 style=\"color:#0b4f6c; margin:12px 0 4px;\">Your Reservation is Confirmed!</h2>\n              <p style=\"color:#4a5a60; font-size:15px; margin:0;\">\n                Hi {{ $('Webhook').item.json.body.customer_name }}, we're excited to host you at Tasty Sea.\n              </p>\n            </td>\n          </tr>\n\n          <!-- פרטי ההזמנה עם גופן מוגדל -->\n          <tr>\n            <td style=\"padding:24px 30px;\">\n              <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#f2fbfd; border:1px solid #d3eef3; border-radius:10px;\">\n                <tr>\n                  <td style=\"padding:18px 20px; border-bottom:1px solid #d3eef3;\">\n                    <span style=\"color:#0b4f6c; font-weight:bold; font-size:18px;\">📅 Date:</span>\n                    <span style=\"color:#333; float:right; font-weight:bold; font-size:18px;\">{{ $('Webhook').item.json.body.date }}</span>\n                  </td>\n                </tr>\n                <tr>\n                  <td style=\"padding:18px 20px; border-bottom:1px solid #d3eef3;\">\n                    <span style=\"color:#0b4f6c; font-weight:bold; font-size:18px;\">🕒 Time:</span>\n                    <span style=\"color:#333; float:right; font-weight:bold; font-size:18px;\">{{ $('Webhook').item.json.body.time }}</span>\n                  </td>\n                </tr>\n                <tr>\n                  <td style=\"padding:18px 20px;\">\n                    <span style=\"color:#0b4f6c; font-weight:bold; font-size:18px;\">👥 Guests:</span>\n                    <span style=\"color:#333; float:right; font-weight:bold; font-size:18px;\">{{ $('Webhook').item.json.body.number_of_guests }}</span>\n                  </td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n\n          <!-- טקסט תחתון -->\n          <tr>\n            <td style=\"padding:0 30px 24px; text-align:center;\">\n              <p style=\"color:#6b7b80; font-size:13px; line-height:1.6;\">\n                Need to change or cancel your reservation? Just reply to our chatbot with your full name, date and time.\n              </p>\n            </td>\n          </tr>\n\n          <!-- פוטר לבן אחיד (עוקף לינקים אוטומטיים של דואר) -->\n          <tr>\n            <td style=\"background-color:#0b4f6c; padding:24px 30px; text-align:center;\">\n              <p style=\"color:#ffffff; font-size:14px; margin:0 0 6px; font-weight:bold;\">Tasty Sea – Seafood</p>\n              \n              <p style=\"margin:0 0 4px;\">\n                <a style=\"color:#ffffff; font-size:12px; text-decoration:none;\">364 Ben Yehuda, Tel-Aviv</a>\n              </p>\n              \n              <p style=\"margin:0 0 4px; font-size:12px; color:#ffffff;\">\n                <a href=\"tel:+972540000000\" style=\"color:#ffffff; text-decoration:none;\">+972-540000000</a> &nbsp;|&nbsp; \n                <a href=\"mailto:hello@tasty.sea.example.il\" style=\"color:#ffffff; text-decoration:none;\">hello@tasty.sea.example.il</a>\n              </p>\n              \n              <p style=\"margin:0;\">\n                <a href=\"http://www.tastysea.example.il\" target=\"_blank\" style=\"color:#ffffff; font-size:12px; text-decoration:none;\">www.tastysea.example.il</a>\n              </p>\n            </td>\n          </tr>\n\n        </table>\n      </td>\n    </tr>\n  </table>\n</body>\n</html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        1216,
+        -96
+      ],
+      "id": "5b8ffb8d-b561-4fb1-ba79-501e75da42fd",
+      "name": "Send an Email",
+      "webhookId": "ff5d0a64-3eb1-4274-b193-f652670a763b",
+      "credentials": {
+        "smtp": {
+          "id": "S7E0V1ZHPtfdkJ0m",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "ariecold@gmail.com",
+        "toEmail": "ariecold@gmail.com",
+        "subject": "Reservation canceled",
+        "html": "=<!DOCTYPE html>\n<html>\n<body style=\"margin:0; padding:0; background-color:#eef6f8; font-family:Arial, Helvetica, sans-serif;\">\n  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#eef6f8; padding:24px 0;\">\n    <tr>\n      <td align=\"center\">\n        <table role=\"presentation\" width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 4px 16px rgba(0,60,90,0.15);\">\n\n          <!-- כותרת עליונה -->\n          <tr>\n            <td style=\"background:linear-gradient(135deg,#0b4f6c 0%,#01baef 55%,#5dd9c1 100%); padding:40px 30px; text-align:center;\">\n              <div style=\"font-size:36px; margin-bottom:8px;\">🌊🐟🦐</div>\n              <h1 style=\"color:#ffffff; margin:0; font-size:26px; letter-spacing:1px;\">Tasty Sea – Seafood</h1>\n              <p style=\"color:#e6faff; margin:6px 0 0; font-size:14px;\">Fresh from the sea to your table</p>\n            </td>\n          </tr>\n\n          <!-- הודעת ביטול -->\n          <tr>\n            <td style=\"padding:32px 30px 8px; text-align:center;\">\n              <div style=\"font-size:40px;\">😔</div>\n              <h2 style=\"color:#b3261e; margin:12px 0 4px;\">Your Reservation Has Been Cancelled</h2>\n              <p style=\"color:#4a5a60; font-size:15px; margin:0;\">\n                Hi {{ $('Webhook').item.json.body.name || $('Webhook').item.json.body.customer_name || 'Guest' }}, as requested, we've cancelled your reservation.\n              </p>\n            </td>\n          </tr>\n\n          <!-- פרטי ההזמנה שבוטלה -->\n          <tr>\n            <td style=\"padding:24px 30px;\">\n              <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#fdf3f2; border:1px solid #f3d9d6; border-radius:10px;\">\n                <tr>\n                  <td style=\"padding:18px 20px; border-bottom:1px solid #f3d9d6;\">\n                    <span style=\"color:#0b4f6c; font-weight:bold; font-size:18px;\">🆔 Booking ID:</span>\n                    <span style=\"color:#333; float:right; font-weight:bold; font-size:18px;\">#{{ $('Webhook').item.json.body.id }}</span>\n                  </td>\n                </tr>\n                <tr>\n                  <td style=\"padding:18px 20px; border-bottom:1px solid #f3d9d6;\">\n                    <span style=\"color:#0b4f6c; font-weight:bold; font-size:18px;\">📅 Date:</span>\n                    <span style=\"color:#333; float:right; font-weight:bold; font-size:18px; text-decoration:line-through;\">\n                      {{ $('Webhook').item.json.body.date }}\n                    </span>\n                  </td>\n                </tr>\n                <tr>\n                  <td style=\"padding:18px 20px; border-bottom:1px solid #f3d9d6;\">\n                    <span style=\"color:#0b4f6c; font-weight:bold; font-size:18px;\">🕒 Time:</span>\n                    <span style=\"color:#333; float:right; font-weight:bold; font-size:18px; text-decoration:line-through;\">\n                      {{ $('Webhook').item.json.body.time }}\n                    </span>\n                  </td>\n                </tr>\n                <tr>\n                  <td style=\"padding:18px 20px;\">\n                    <span style=\"color:#0b4f6c; font-weight:bold; font-size:18px;\">👥 Guests:</span>\n                    <span style=\"color:#333; float:right; font-weight:bold; font-size:18px; text-decoration:line-through;\">\n                      {{ $('Webhook').item.json.body.number_of_guests }}\n                    </span>\n                  </td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n\n          <!-- טקסט תחתון -->\n          <tr>\n            <td style=\"padding:0 30px 24px; text-align:center;\">\n              <p style=\"color:#6b7b80; font-size:13px; line-height:1.6;\">\n                Changed your mind? We'd love to have you at Tasty Sea — just message our chatbot to book a new time.\n              </p>\n            </td>\n          </tr>\n\n          <!-- פוטר לבן אחיד -->\n          <tr>\n            <td style=\"background-color:#0b4f6c; padding:24px 30px; text-align:center;\">\n              <p style=\"color:#ffffff; font-size:14px; margin:0 0 6px; font-weight:bold;\">Tasty Sea – Seafood</p>\n\n              <p style=\"margin:0 0 4px;\">\n                <a style=\"color:#ffffff; font-size:12px; text-decoration:none;\">364 Ben Yehuda, Tel-Aviv</a>\n              </p>\n\n              <p style=\"margin:0 0 4px; font-size:12px; color:#ffffff;\">\n                <a href=\"tel:+972540000000\" style=\"color:#ffffff; text-decoration:none;\">+972-540000000</a> &nbsp;|&nbsp;\n                <a href=\"mailto:hello@tasty.sea.example.il\" style=\"color:#ffffff; text-decoration:none;\">hello@tasty.sea.example.il</a>\n              </p>\n\n              <p style=\"margin:0;\">\n                <a href=\"http://www.tastysea.example.il\" target=\"_blank\" style=\"color:#ffffff; font-size:12px; text-decoration:none;\">www.tastysea.example.il</a>\n              </p>\n            </td>\n          </tr>\n\n        </table>\n      </td>\n    </tr>\n  </table>\n</body>\n</html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        1216,
+        256
+      ],
+      "id": "28cb31b7-3866-452e-b426-c53f7e0dcae9",
+      "name": "Send an Email2",
+      "webhookId": "ff5d0a64-3eb1-4274-b193-f652670a763b",
+      "credentials": {
+        "smtp": {
+          "id": "S7E0V1ZHPtfdkJ0m",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "69095128-a8f4-4b2e-b8bf-f0c88f573c3b",
+              "leftValue": "={{ $json.body.event }}",
+              "rightValue": "reservation",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        192,
+        0
+      ],
+      "id": "134c2ab5-a8d6-4731-87d3-b169306f2aa0",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=Reservation confirmed for {{ $json.body.customer_name }} on {{$json.body.date }}.",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        912,
+        -128
+      ],
+      "id": "0e5e4cdc-615c-46b4-93cb-8abd9190ea81",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=We're sorry to see you go!\nYour reservation (#{{ $('Webhook').item.json.body.id }}) for {{ $('Webhook').item.json.body.date }} at {{ $('Webhook').item.json.body.time }} has been successfully cancelled.\nIf you'd like to reschedule in the future, we'll be happy to welcome you back to Tasty Sea - Seafood.",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        992,
+        160
+      ],
+      "id": "b2b8b8e9-e2c6-4821-8caa-f57edf68a2ef",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "ariecold@gmail.com",
+          "mode": "list",
+          "cachedResultName": "ariecold@gmail.com"
+        },
+        "start": "={{ $json.body.date }}T{{ $json.body.time }}:00+03:00",
+        "end": "={{ DateTime.fromISO($json.body.date + 'T' + $json.body.time, { zone: 'Asia/Jerusalem' }).plus({ hours: 2 }).toISO() }}",
+        "additionalFields": {
+          "description": "=Booking ID: {{$json.body.id}}",
+          "summary": "=הזמנה: {{$json.body.customer_name}} (שולחן ל-{{$json.body.number_of_guests}} אנשים)"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        528,
+        -128
+      ],
+      "id": "d0d5a854-874a-4ca0-b8e0-e052305f0735",
+      "name": "Create an event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "ZPTYlOvqm8HxBP04",
+          "name": "Google Calendar n8n"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "ariecold@gmail.com",
+          "mode": "list",
+          "cachedResultName": "ariecold@gmail.com"
+        },
+        "returnAll": true,
+        "options": {
+          "query": "=Booking ID: {{$json.body.id}}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        464,
+        160
+      ],
+      "id": "2df5ec3f-67dc-468a-864f-8f5340983ae1",
+      "name": "Get many events",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "ZPTYlOvqm8HxBP04",
+          "name": "Google Calendar n8n"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "ariecold@gmail.com",
+          "mode": "list",
+          "cachedResultName": "ariecold@gmail.com"
+        },
+        "eventId": "={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        752,
+        160
+      ],
+      "id": "dc71d775-97a2-4581-ac82-c969330a5d08",
+      "name": "Delete an event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "ZPTYlOvqm8HxBP04",
+          "name": "Google Calendar n8n"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "from": "+19714466212",
+        "to": "+972542104548",
+        "message": "=We're excited and delighted that you've chosen Tasty Sea - Seafood!\nYour reservation for {{ $('Webhook').item.json.body.date }} at {{ $('Webhook').item.json.body.time }} has been confirmed.\nReservation #{{ $('Webhook').item.json.body.id }}\nIf you need anything before your visit, we're here to help.\nPhone: +972-540000000\nWe look forward to welcoming you!",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        1216,
+        -272
+      ],
+      "id": "40f56018-a771-41cf-bb76-6bccccda1647",
+      "name": "Send an SMS/MMS/WhatsApp message",
+      "credentials": {
+        "twilioApi": {
+          "id": "ND9d94jFJ6oe5Wcx",
+          "name": "Twilio account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "from": "+19714466212",
+        "to": "+972542104548",
+        "message": "=We're sorry to see you go!\nYour reservation (#{{ $('Webhook').item.json.body.id }}) for {{ $('Webhook').item.json.body.date }} at {{ $('Webhook').item.json.body.time }} has been cancelled.\nIf you'd like to reschedule in the future, we'll be happy to welcome you back to Tasty Sea - Seafood.",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        1216,
+        64
+      ],
+      "id": "838866de-67c9-427c-92a8-bc51b6513ebc",
+      "name": "Send an SMS/MMS/WhatsApp message1",
+      "credentials": {
+        "twilioApi": {
+          "id": "ND9d94jFJ6oe5Wcx",
+          "name": "Twilio account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Create an event",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get many events",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Webhook": {
+      "main": [
+        [
+          {
+            "node": "Send an Email",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send an SMS/MMS/WhatsApp message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Send an Email2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send an SMS/MMS/WhatsApp message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send an Email": {
+      "main": [
+        []
+      ]
+    },
+    "Create an event": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many events": {
+      "main": [
+        [
+          {
+            "node": "Delete an event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete an event": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send an Email2": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "603bbf8a-0f9b-48ba-8f98-280b7863595f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cd072639c77367a1b670ccb69d94b539a813bc256a7c4418250ef91c5b4e70b4"
+  },
+  "nodeGroups": [],
+  "id": "CouVhtUGXAQSLQnw",
+  "tags": []
+}
